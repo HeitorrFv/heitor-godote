@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c41sxjeof2te3"]
+
+[ext_resource type="Texture2D" uid="uid://d2myqv2fcrnxk" path="res://imagens/ceu.jpg" id="1_ksuqd"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" unique_id=376730479]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1150236478]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1487187758]
+position = Vector2(607, 250)
+texture = ExtResource("1_ksuqd")
