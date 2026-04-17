@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b57eeif8t0xcl"
-path="res://.godot/imported/sEnemy_Jumping.png-13c33a9be6ca23d7546d29ab5fd2fca3.ctex"
+uid="uid://x6urdr8ulvt6"
+path="res://.godot/imported/origbig.png-ce9a3663fb13752a04a9a57869647a9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imagens/Basic Platformer Asset Pack/Enemy (Slime)/sEnemy_Jumping.png"
-dest_files=["res://.godot/imported/sEnemy_Jumping.png-13c33a9be6ca23d7546d29ab5fd2fca3.ctex"]
+source_file="res://imagens/Nature Landscapes Free Pixel Art/nature_1/origbig.png"
+dest_files=["res://.godot/imported/origbig.png-ce9a3663fb13752a04a9a57869647a9b.ctex"]
 
 [params]
 

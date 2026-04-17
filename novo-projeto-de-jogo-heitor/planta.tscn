@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c1qv5jd6hdn4i"]
+
+[ext_resource type="Script" uid="uid://74ogji4cyfen" path="res://character_body_2d.gd" id="1_wh65v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgas5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wh65v"]
+
+[node name="Plant" type="CharacterBody2D" unique_id=911274458]
+script = ExtResource("1_wh65v")
+
+[node name="Timer" type="Timer" parent="." unique_id=1165213815]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=330905906]
+shape = SubResource("RectangleShape2D_jgas5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1854350430]
+sprite_frames = SubResource("SpriteFrames_wh65v")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

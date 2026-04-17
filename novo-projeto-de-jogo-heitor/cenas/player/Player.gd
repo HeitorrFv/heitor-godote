@@ -31,3 +31,20 @@ func _physics_process(delta):
 
 	# Aplica todas as velocidades configuradas acima e faz o personagem realmente se mover!
 	move_and_slide()
+
+# Adicione no final do script do Player.gd
+
+func take_damage():
+	Global.health -= 1 # Tira 1 do Global.health
+	
+	if Global.health <= 0: # Se a vida chegar a zero ou menos...
+		die()              # ...chama a função de morte
+
+func die():
+	print("Game Over - O jogador morreu!")
+	Global.health = 3 # Reseta vida para a próxima tentativa
+	Global.coins = 0  # Opcional: faz o jogador perder as moedas ao morrer
+	
+	# Recarrega a cena atual imediatamente (recomeça a fase)
+	# Mais tarde vamos mudar isso para ir para uma Tela de Game Over de verdade
+	get_tree().reload_current_scene()

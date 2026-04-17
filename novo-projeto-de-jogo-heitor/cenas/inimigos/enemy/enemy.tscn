@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://7wox26ywspfk"]
+
+[ext_resource type="Script" uid="uid://bu66mnfq6ei6" path="res://cenas/inimigos/enemy/enemy.gd" id="1_fc1ag"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gyqm"]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hb8ge"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1ltt"]
+radius = 9.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=155754591]
+script = ExtResource("1_fc1ag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1787704049]
+position = Vector2(0, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4gyqm")
+debug_color = Color(0.9816387, 0, 0.3734039, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=283404570]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_hb8ge")
+autoplay = "default"
+
+[node name="HitboxPlayer" type="Area2D" parent="." unique_id=1391570199]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxPlayer" unique_id=696600960]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_e1ltt")
+
+[node name="WallCheck" type="RayCast2D" parent="." unique_id=814398762]
+target_position = Vector2(20, 0)
+
+[connection signal="body_entered" from="HitboxPlayer" to="." method="_on_hitbox_player_body_entered"]
