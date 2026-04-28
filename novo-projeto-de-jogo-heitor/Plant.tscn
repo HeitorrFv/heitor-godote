@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bkr4lmkujs7lp"]
+
+[ext_resource type="Script" uid="uid://cyh4w55mwkbie" path="res://character_body_2d.gd" id="1_w7rnh"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=99110462]
+script = ExtResource("1_w7rnh")
+
+[node name="Timer" type="Timer" parent="." unique_id=1934536057]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -48,7 +48,7 @@ texture = ExtResource("3_k5vhw")
 [node name="Parallax2D4" type="Parallax2D" parent="." unique_id=1717024187]
 scale = Vector2(1.5, 1.5)
 scroll_scale = Vector2(0.9, 0.9)
-scroll_offset = Vector2(649, 281)
+scroll_offset = Vector2(-854, 217)
 repeat_size = Vector2(863.955, 0)
 follow_viewport = false
 

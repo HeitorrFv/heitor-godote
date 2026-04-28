@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://d3rv4w8bve255" path="res://cenas/player/Player.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://c41sxjeof2te3" path="res://cenas/parallax/parallax_background.tscn" id="3_hn12h"]
 [ext_resource type="PackedScene" uid="uid://brv62vitgqy8" path="res://cenas/hud/canvas_layer.tscn" id="4_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://be762ddrn4uhp" path="res://cenas/inimigos/bat/bat.tscn" id="6_iaauu"]
+[ext_resource type="PackedScene" uid="uid://cop15feoqpjg0" path="res://cenas/inimigos/slime/slime.tscn" id="7_7ypd1"]
+[ext_resource type="PackedScene" uid="uid://00xyjml5rx0e" path="res://killzone.tscn" id="8_vvs04"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ihfcg"]
 texture = ExtResource("1_3hls8")
@@ -355,3 +358,12 @@ tile_set = SubResource("TileSet_ihfcg")
 [node name="ParallaxBackground" parent="." unique_id=376730479 instance=ExtResource("3_hn12h")]
 
 [node name="CanvasLayer" parent="." unique_id=719048754 instance=ExtResource("4_ihfcg")]
+
+[node name="Bat" parent="." unique_id=539757533 instance=ExtResource("6_iaauu")]
+position = Vector2(337, 602)
+
+[node name="Slime" parent="." unique_id=304033643 instance=ExtResource("7_7ypd1")]
+position = Vector2(192, 606)
+
+[node name="Killzone" parent="." unique_id=1479504135 instance=ExtResource("8_vvs04")]
+position = Vector2(317, 768)

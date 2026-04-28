@@ -25,6 +25,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol2e7"]
+size = Vector2(143, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anole"]
+size = Vector2(29, 15)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ulak1"]
 radius = 8.0
 
@@ -37,10 +43,23 @@ autoplay = "default"
 
 [node name="DetectionZone" type="Area2D" parent="." unique_id=449316571]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone" unique_id=460423034]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_ol2e7")
+debug_color = Color(0.914169, 0.23753107, 0.43788058, 0.41960785)
+
 [node name="Hitbox" type="Area2D" parent="." unique_id=204256611]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1001956833]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_anole")
+debug_color = Color(0.782398, 0.43582994, 0, 0.41960785)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1496826130]
+position = Vector2(-1, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ulak1")
+disabled = true
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

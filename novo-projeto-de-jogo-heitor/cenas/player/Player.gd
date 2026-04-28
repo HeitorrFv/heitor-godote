@@ -1,50 +1,69 @@
 extends CharacterBody2D
 
-@export var SPEED = 175.0 # Velocidade de movimento lateral
-@export var JUMP_FORCE = -200.0 # Força do pulo (Lembre-se: Negativo vai para CIMA)
-var gravity = 980.0 # Força da gravidade (Positivo puxa para BAIXO)
+@export var SPEED = 175.0 
+@export var JUMP_FORCE = -200.0 
+var gravity = 980.0 
 
-# Pega a referência da nossa animação para podermos controlá-la
+# Variável para o player não levar dano seguido (0.5 segundos de paz)
+var is_taking_damage = false
+
 @onready var anim = $AnimatedSprite2D
 
-# A função _physics_process roda 60 vezes por segundo (é o coração da física)
-func _physics_process(delta):
-	# 1. Aplicar Gravidade se não estiver no chão (is_on_floor verifica o TileMap)
+func _physics_process(_delta):
+	# 1. Aplicar Gravidade
 	if not is_on_floor():
-		velocity.y += gravity * delta # Delta ajusta a queda para ser suave em qualquer PC
+		velocity.y += gravity * _delta 
 
-	# 2. Pular se apertar a tecla Espaço/Seta para Cima (ui_accept) e estiver no chão
+	# 2. Pular
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_FORCE
 
 	# 3. Movimentar Esquerda/Direita
-	# get_axis retorna -1 (Esquerda), 1 (Direita) ou 0 (Parado)
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
-	if direction: # Se o jogador estiver apertando algum botão de andar...
-		velocity.x = direction * SPEED # Aplica a velocidade
-		anim.play("run") # Toca a animação "run"
-		anim.flip_h = (direction < 0) # Vira a imagem para a esquerda se direction for negativo
-	else: # Se soltou os botões...
-		velocity.x = move_toward(velocity.x, 0, SPEED) # Freia o personagem
-		anim.play("idle") # Toca a animação "idle"
+	# Só permite o controle normal se não estiver no meio de um knockback pesado
+	if direction: 
+		velocity.x = direction * SPEED 
+		anim.play("run") 
+		anim.flip_h = (direction < 0) 
+	else: 
+		velocity.x = move_toward(velocity.x, 0, SPEED) 
+		anim.play("idle") 
 
-	# Aplica todas as velocidades configuradas acima e faz o personagem realmente se mover!
 	move_and_slide()
 
-# Adicione no final do script do Player.gd
-
-func take_damage():
-	Global.health -= 1 # Tira 1 do Global.health
+# --- FUNÇÃO DE DANO COM KNOCKBACK ---
+func take_damage(enemy_pos: Vector2):
+	if is_taking_damage: # Se já estiver no tempo de recuperação, ignora o novo dano
+		return
+		
+	is_taking_damage = true
+	Global.health -= 1 
 	
-	if Global.health <= 0: # Se a vida chegar a zero ou menos...
-		die()              # ...chama a função de morte
+	# Lógica do Empurrão (Knockback)
+	var knockback_dir = (global_position - enemy_pos).normalized()
+	velocity = knockback_dir * 300.0 
+	velocity.y = -150.0 
+	
+	# Feedback visual (transparência)
+	modulate.a = 0.5 
+	
+	if Global.health <= 0:
+		die()
+	else:
+		# Tempo de invulnerabilidade
+		await get_tree().create_timer(0.5).timeout
+		is_taking_damage = false
+		modulate.a = 1.0 
 
+# --- FUNÇÃO DE MORTE (Chamada por inimigos ou Killzone) ---
 func die():
 	print("Game Over - O jogador morreu!")
-	Global.health = 3 # Reseta vida para a próxima tentativa
-	Global.coins = 0  # Opcional: faz o jogador perder as moedas ao morrer
 	
-	# Recarrega a cena atual imediatamente (recomeça a fase)
-	# Mais tarde vamos mudar isso para ir para uma Tela de Game Over de verdade
-	get_tree().reload_current_scene()
+	# Resetamos as variáveis globais e locais antes de reiniciar
+	Global.health = 3
+	Global.coins = 0
+	is_taking_damage = false # Garante que o player não renasça transparente
+	
+	# Reinicia a cena de forma segura (deferred)
+	get_tree().call_deferred("reload_current_scene")
