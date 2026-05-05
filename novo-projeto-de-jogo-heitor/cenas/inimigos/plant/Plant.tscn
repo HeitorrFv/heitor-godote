@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bkr4lmkujs7lp"]
+
+[ext_resource type="Script" uid="uid://cyh4w55mwkbie" path="res://character_body_2d.gd" id="1_w7rnh"]
+[ext_resource type="Texture2D" uid="uid://wr1ow71yxuwy" path="res://imagens/frame_1.png" id="2_pgwxn"]
+[ext_resource type="PackedScene" uid="uid://53qbl8guu0c8" path="res://cenas/inimigos/plant/Bullet.tscn" id="3_d1egn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81fht"]
+size = Vector2(18, 20)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=99110462]
+script = ExtResource("1_w7rnh")
+bullet_scene = ExtResource("3_d1egn")
+
+[node name="Timer" type="Timer" parent="." unique_id=1934536057]
+wait_time = 3.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=496900972]
+position = Vector2(8.000002, 1.000001)
+scale = Vector2(0.1860902, 0.20180723)
+texture = ExtResource("2_pgwxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2140949255]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_81fht")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://be762ddrn4uhp" path="res://cenas/inimigos/bat/bat.tscn" id="6_iaauu"]
 [ext_resource type="PackedScene" uid="uid://cop15feoqpjg0" path="res://cenas/inimigos/slime/slime.tscn" id="7_7ypd1"]
 [ext_resource type="PackedScene" uid="uid://00xyjml5rx0e" path="res://killzone.tscn" id="8_vvs04"]
+[ext_resource type="PackedScene" uid="uid://bkr4lmkujs7lp" path="res://cenas/inimigos/plant/Plant.tscn" id="9_lhmtc"]
+[ext_resource type="PackedScene" uid="uid://blu50wfa7jrf3" path="res://portal.tscn" id="10_y7pnk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ihfcg"]
 texture = ExtResource("1_3hls8")
@@ -366,4 +368,10 @@ position = Vector2(337, 602)
 position = Vector2(192, 606)
 
 [node name="Killzone" parent="." unique_id=1479504135 instance=ExtResource("8_vvs04")]
-position = Vector2(317, 768)
+position = Vector2(307, 676)
+
+[node name="CharacterBody2D" parent="." unique_id=99110462 instance=ExtResource("9_lhmtc")]
+position = Vector2(38, 615)
+
+[node name="Portal" parent="CharacterBody2D" unique_id=1320576573 instance=ExtResource("10_y7pnk")]
+position = Vector2(444, -18)
