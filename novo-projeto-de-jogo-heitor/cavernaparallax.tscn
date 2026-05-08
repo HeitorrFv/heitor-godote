@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://gq4kqnag6nmp"]
+
+[ext_resource type="Texture2D" uid="uid://buybecps4416o" path="res://imagens/blue/blue/blue_L1.png" id="1_k12yy"]
+[ext_resource type="Texture2D" uid="uid://cnjix0hfuiwq2" path="res://imagens/blue/blue/blue_L2.png" id="2_0piwq"]
+[ext_resource type="Texture2D" uid="uid://c8ldtjnlyujfe" path="res://imagens/blue/blue/blue_L3.png" id="3_8wqhu"]
+[ext_resource type="Texture2D" uid="uid://b0ayrhavg5eu5" path="res://imagens/blue/blue/blue_L4.png" id="4_qxyv6"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" unique_id=1238628302]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=988278759]
+scroll_offset = Vector2(322, 118)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=723263018]
+texture = ExtResource("1_k12yy")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1020109648]
+scroll_offset = Vector2(322, 118)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1477377172]
+texture = ExtResource("2_0piwq")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=526061123]
+scroll_offset = Vector2(322, 118)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=7263943]
+texture = ExtResource("3_8wqhu")
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=922127753]
+scroll_offset = Vector2(322, 118)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4" unique_id=1213102543]
+texture = ExtResource("4_qxyv6")

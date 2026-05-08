@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bv6g8wjag43u5" path="res://imagens/Basic Platformer Asset Pack/sTileset.png" id="1_3hls8"]
 [ext_resource type="PackedScene" uid="uid://csslr8gnby01t" path="res://cenas/moeda/coin.tscn" id="1_rka8t"]
 [ext_resource type="PackedScene" uid="uid://d3rv4w8bve255" path="res://cenas/player/Player.tscn" id="2_hbghi"]
-[ext_resource type="PackedScene" uid="uid://c41sxjeof2te3" path="res://cenas/parallax/parallax_background.tscn" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://c41sxjeof2te3" path="res://cenas/parallax/parallax1.tscn" id="3_hn12h"]
 [ext_resource type="PackedScene" uid="uid://brv62vitgqy8" path="res://cenas/hud/canvas_layer.tscn" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://be762ddrn4uhp" path="res://cenas/inimigos/bat/bat.tscn" id="6_iaauu"]
 [ext_resource type="PackedScene" uid="uid://cop15feoqpjg0" path="res://cenas/inimigos/slime/slime.tscn" id="7_7ypd1"]
@@ -371,7 +371,7 @@ position = Vector2(192, 606)
 position = Vector2(307, 676)
 
 [node name="CharacterBody2D" parent="." unique_id=99110462 instance=ExtResource("9_lhmtc")]
-position = Vector2(38, 615)
+position = Vector2(38, 614)
 
 [node name="Portal" parent="CharacterBody2D" unique_id=1320576573 instance=ExtResource("10_y7pnk")]
 position = Vector2(444, -18)
